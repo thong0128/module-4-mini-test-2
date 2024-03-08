@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="/layout :: head">
+    <title>Mini Test 2</title>
+</head>
+<body>
+<h3>Task</h3>
+<p>
+    <a th:href="@{/tasks/create}">
+        Add new task
+    </a>
+</p>
+<p>
+    <a th:href="@{/categories}">
+        Categories
+    </a>
+</p>
+<div style="margin-bottom: 10px; margin-left: 110px">
+    <form th:action="@{/tasks/search}" method="get">
+        <label><input type="text" name="search"></label>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+</div>
+<div class="notify">
+    <div th:if="${message}">
+        <span th:text="${message}"></span>
+    </div>
+</div>
+
+<table id = "tasks">
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>Name</th>
+        <th>Note</th>
+        <th>Amount</th>
+        <th>Province</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="t,tStatus : ${tasks}">
+        <td th:text="${tStatus.count}"></td>
+        <td th:text="${t.getName()()}"></td>
+        <td th:text="${t.getNote()()}"></td>
+        <td th:text="${t.getAmount()()}"></td>
+        <td th:text="${t.getCategory().getName()()}"></td>
+        <td><a th:href="@{/tasks/update/{id}(id=${c.getId()})}">update</a></td>
+        <td><a th:href="@{/tasks/delete/{id}(id=${c.getId()})}">delete</a></td>
+    </tr>
+    </tbody>
+</table>
+<a class="btn btn-primary" th:if="${tasks.hasPrevious()}"
+   th:href="@{/tasks/page(page=${tasks.number - 1})}">Previous</a>
+<span th:text="${tasks.number + 1}"></span> | <span th:text="${tasks.totalPages}"></span>
+<a class="btn btn-primary" th:if="${tasks.hasNext()}"
+   th:href="@{/customers/page(page=${tasks.number + 1})}">Next</a>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>
