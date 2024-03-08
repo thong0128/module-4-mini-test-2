@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="/layout :: head">
-    <title>List Province</title>
+    <title>Mini Test 2</title>
 </head>
 <body>
-<h3>Provinces</h3>
+<h3>Categories</h3>
 <p>
-    <a th:href="@{/provinces/create}">
-        Add new province
+    <a th:href="@{/categories/create}">
+        Add new category
     </a>
 </p>
 <p>
-    <a th:href="@{/customers}">
-        Customers
+    <a th:href="@{/tasks}">
+        Task list
     </a>
 </p>
 <div class="notify">
@@ -21,19 +21,21 @@
     </div>
 </div>
 
-<table id = "customers">
+<table id = "tasks">
     <thead>
     <tr>
         <th>STT</th>
         <th>Name</th>
+        <th>Description</th>
         <th>Update</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="p, pStatus : ${provinces}">
-        <td th:text="${pStatus.count}"></td>
-        <td><a th:href="@{/provinces/view-province/{id}(id=${p.getId()})}" th:text="${p.getName()}"></a></td>
-        <td><a th:href="@{/provinces/update/{id}(id=${p.getId()})}">update</a></td>
+    <tr th:each="c, cStatus : ${categories}">
+        <td th:text="${cStatus.count}"></td>
+        <td><a th:href="@{/categories/view-category/{id}(id=${c.getId()})}" th:text="${c.getName()}"></a></td>
+        <td th:text="${c.getDescription()}"></td>
+        <td><a th:href="@{/provinces/update/{id}(id=${c.getId()})}">update</a></td>
     </tr>
     </tbody>
 </table>
