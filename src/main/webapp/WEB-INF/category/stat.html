@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="/layout :: head">
+    <title>Mini Test 2</title>
+</head>
+<body>
+<h3>Categories</h3>
+<p>
+    <a th:href="@{/categories/create}">
+        Add new category
+    </a>
+</p>
+<p>
+    <a th:href="@{/tasks}">
+        Task list
+    </a>
+</p>
+<p>
+    <a th:href="@{/categories}">
+        Category list
+    </a>
+</p>
+
+<table id = "tasks">
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>Name</th>
+        <th>Total Task</th>
+        <th>Total Amount</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="s, sStatus : ${stats}">
+        <td th:text="${sStatus.count}"></td>
+        <td th:text="${s.getName()}"></td>
+        <td th:text="${s.getTotalTask()}"></td>
+        <td th:text="${s.getTotalAmount()}"></td>
+    </tr>
+    </tbody>
+</table>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>

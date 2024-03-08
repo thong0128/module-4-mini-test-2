@@ -1,6 +1,7 @@
 package com.codegym.minitest2.service.impl;
 
 import com.codegym.minitest2.model.Category;
+import com.codegym.minitest2.model.CategoryStat;
 import com.codegym.minitest2.repository.ICategoryRepository;
 import com.codegym.minitest2.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,10 @@ public class CategoryService implements ICategoryService {
     @Override
     public void remove(Long id) {
         categoryRepository.deleteById(id);
+    }
+
+    @Override
+    public Iterable<CategoryStat> countTaskAndTotalAmountByCategory() {
+        return categoryRepository.countTaskAndTotalAmountByCategory();
     }
 }

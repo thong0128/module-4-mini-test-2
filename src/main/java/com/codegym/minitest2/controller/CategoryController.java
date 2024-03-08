@@ -1,6 +1,7 @@
 package com.codegym.minitest2.controller;
 
 import com.codegym.minitest2.model.Category;
+import com.codegym.minitest2.model.CategoryStat;
 import com.codegym.minitest2.model.Task;
 import com.codegym.minitest2.service.ICategoryService;
 import com.codegym.minitest2.service.ITaskService;
@@ -76,5 +77,12 @@ public class CategoryController {
         categoryService.remove(id);
         redirect.addFlashAttribute("message", "Delete category successfully");
         return "redirect:/categories";
+    }
+    @GetMapping("/stat")
+    public ModelAndView stat() {
+        ModelAndView modelAndView = new ModelAndView("/category/stat");
+        Iterable<CategoryStat> stats = categoryService.countTaskAndTotalAmountByCategory();
+        modelAndView.addObject("stats", stats);
+        return modelAndView;
     }
 }
