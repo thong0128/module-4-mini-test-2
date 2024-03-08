@@ -34,7 +34,7 @@
         <th>Name</th>
         <th>Note</th>
         <th>Amount</th>
-        <th>Province</th>
+        <th>Category</th>
         <th>Update</th>
         <th>Delete</th>
     </tr>
@@ -42,10 +42,10 @@
     <tbody>
     <tr th:each="t,tStatus : ${tasks}">
         <td th:text="${tStatus.count}"></td>
-        <td th:text="${t.getName()()}"></td>
-        <td th:text="${t.getNote()()}"></td>
-        <td th:text="${t.getAmount()()}"></td>
-        <td th:text="${t.getCategory().getName()()}"></td>
+        <td th:text="${t.getName()}"></td>
+        <td th:text="${t.getNote()}"></td>
+        <td th:text="${t.getAmount()}"></td>
+        <td th:text="${t.getCategory().getName()}"></td>
         <td><a th:href="@{/tasks/update/{id}(id=${c.getId()})}">update</a></td>
         <td><a th:href="@{/tasks/delete/{id}(id=${c.getId()})}">delete</a></td>
     </tr>
