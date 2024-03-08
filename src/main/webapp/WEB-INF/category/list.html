@@ -27,7 +27,9 @@
         <th>STT</th>
         <th>Name</th>
         <th>Description</th>
+        <th>Total Amount</th>
         <th>Update</th>
+        <th>Delete</th>
     </tr>
     </thead>
     <tbody>
@@ -35,7 +37,8 @@
         <td th:text="${cStatus.count}"></td>
         <td><a th:href="@{/categories/view-category/{id}(id=${c.getId()})}" th:text="${c.getName()}"></a></td>
         <td th:text="${c.getDescription()}"></td>
-        <td><a th:href="@{/provinces/update/{id}(id=${c.getId()})}">update</a></td>
+        <td><a th:href="@{/categories/update/{id}(id=${c.getId()})}">update</a></td>
+        <td><a th:href="@{/categories/delete/{id}(id=${c.getId()})}">delete</a></td>
     </tr>
     </tbody>
 </table>
