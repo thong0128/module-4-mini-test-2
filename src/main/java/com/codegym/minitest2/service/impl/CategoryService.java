@@ -4,6 +4,7 @@ import com.codegym.minitest2.model.Category;
 import com.codegym.minitest2.model.CategoryStat;
 import com.codegym.minitest2.repository.ICategoryRepository;
 import com.codegym.minitest2.service.ICategoryService;
+import com.codegym.minitest2.service.ITaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,8 @@ import java.util.Optional;
 public class CategoryService implements ICategoryService {
     @Autowired
     private ICategoryRepository categoryRepository;
+    @Autowired
+    private ITaskService taskService;
 
     @Override
     public Iterable<Category> findAll() {
@@ -29,9 +32,13 @@ public class CategoryService implements ICategoryService {
         return categoryRepository.findById(id);
     }
 
+//    @Override
+//    public void remove(Long id) {
+//        categoryRepository.deleteById(id);
+//    }
     @Override
     public void remove(Long id) {
-        categoryRepository.deleteById(id);
+        categoryRepository.deleteCategory(id);
     }
 
     @Override

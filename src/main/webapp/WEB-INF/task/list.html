@@ -45,7 +45,7 @@
         <td th:text="${t.getName()}"></td>
         <td th:text="${t.getNote()}"></td>
         <td th:text="${t.getAmount()}"></td>
-        <td th:text="${t.getCategory().getName()}"></td>
+        <td th:text="${t.getCategory()==null}?'no category':${t.getCategory().getName()}"></td>
         <td><a th:href="@{/tasks/update/{id}(id=${t.getId()})}">update</a></td>
         <td><a th:href="@{/tasks/delete/{id}(id=${t.getId()})}">delete</a></td>
     </tr>
